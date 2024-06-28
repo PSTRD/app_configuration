@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/PSTRD/app_configuration.git
     targetRevision: HEAD
-    path: 
+    path: /
   destination: 
     server: https://kubernetes.default.svc
     namespace: default
