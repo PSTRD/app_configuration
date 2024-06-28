@@ -1,0 +1,30 @@
+keycloak:
+  replicaCount: 1
+  fullnameOverride: "keycloak"
+  keycloak:
+    username: "admin"
+    password: "admin"
+    persistence:
+      deployPostgres: true
+      dbVendor: postgres
+      dbName: keycloak
+      dbHost: keycloak-postgresql
+      dbPort: 5432
+      dbUser: keycloak
+      dbPassword: keycloak
+    extraInitContainers: |
+      - name: extensions
+        image: busybox
+        command:
+          - sh
+          - -c
+          - |
+            echo "Initializing Keycloak with custom realm and roles"
+            apk add --no-cache curl
+            until $(curl --output /dev/null --silent --head --fail http://localhost:8080/auth); do
+              echo "Waiting for Keycloak to start..."
+              sleep 5
+            done
+            echo "Keycloak started, configuring realm and roles..."
+            ACCESS_TOKEN=$(curl -d "client_id=admin-cli" -d "username=admin" -d "password=admin" -d "grant_type=password" -d "client_secret=$(kubectl get secret --namespace {{ .Release.Namespace }} keycloak -o jsonpath="{.data.client-secret}" | base64 --decode)" "http://localhost:8080/auth/realms/master/protocol/openid-connect/token" | jq -r '.access_token')
+            curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $ACCESS_TOKEN" -d '{"id": "bitbox", "realm": "bitbox", "enabled": true, "roles": {"realm": [{"name": "admin"}, {"name": "professeur"}, {"name": "élève"}]}}' "http://localhost:8080/auth/admin/realms"
