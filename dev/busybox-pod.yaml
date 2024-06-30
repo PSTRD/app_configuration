@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: busybox-pod
+  name: busybox2-pod
   labels:
     purpose: demonstrate-busybox
 spec:
