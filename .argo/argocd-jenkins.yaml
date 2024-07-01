@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: bitbox-argo-app
+  name: jenkins-argo-app
   namespace: argocd
 spec:
   project: default
@@ -9,10 +9,10 @@ spec:
   source:
     repoURL: https://github.com/PSTRD/app_configuration.git
     targetRevision: HEAD
-    path: dev
+    path: charts/keycloak
   destination: 
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: keycloak
 
   syncPolicy:
     syncOptions:
