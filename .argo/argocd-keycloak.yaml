@@ -9,10 +9,10 @@ spec:
   source:
     repoURL: https://github.com/PSTRD/app_configuration.git
     targetRevision: HEAD
-    path: charts/jenkins
+    path: charts/keycloak
   destination: 
     server: https://kubernetes.default.svc
-    namespace: jenkins
+    namespace: keycloak
 
   syncPolicy:
     syncOptions:
