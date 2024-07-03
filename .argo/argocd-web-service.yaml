@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/PSTRD/app_configuration.git
     targetRevision: HEAD
-    path: charts/web_service
+    path: charts/web-service
   destination: 
     server: https://kubernetes.default.svc
     namespace: web-service
