@@ -1,4 +1,4 @@
-# Default values for web_service.
+# Default values for web-service.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -8,7 +8,7 @@ image:
   repository: pstrd/web_service
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "latest"
+  tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
@@ -44,13 +44,13 @@ service:
   port: 80
 
 ingress:
-  enabled: true
+  enabled: false
   className: ""
   annotations: {}
-  ingressClassName: nginx
+    # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: bitbox.192.168.58.2.nip.io
+    - host: chart-example.local
       paths:
         - path: /
           pathType: ImplementationSpecific
