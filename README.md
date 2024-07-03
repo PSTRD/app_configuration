@@ -1,1 +1,11 @@
 # app_configuration
+
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d && echo
+
+HJrtEDeSUPrt6Rhz
+
+jsonpath="{.data.jenkins-admin-password}"
+secret=$(kubectl get secret -n jenkins jenkins -o jsonpath=$jsonpath)
+echo $(echo $secret | base64 --decode)
+
+USoYCUxMaEz9nUotf6xvu1

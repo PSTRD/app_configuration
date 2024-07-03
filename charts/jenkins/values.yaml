@@ -694,7 +694,7 @@ controller:
 
     # configures the hostname e.g. jenkins.example.com
     # -- Ingress hostname
-    hostName: jenkins.192.168.49.2.nip.io
+    hostName: jenkins.192.168.58.2.nip.io
     # -- Hostname to serve assets from
     resourceRootUrl:
     # -- Ingress TLS configuration
