@@ -41,7 +41,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 80
+  port: 5173
 
 ingress:
   enabled: false
@@ -74,11 +74,11 @@ resources: {}
 livenessProbe:
   httpGet:
     path: /
-    port: http
+    port: 5173
 readinessProbe:
   httpGet:
     path: /
-    port: http
+    port: 5173
 
 autoscaling:
   enabled: false
