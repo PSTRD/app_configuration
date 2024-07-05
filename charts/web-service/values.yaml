@@ -52,13 +52,6 @@ ingress:
   hosts:
     - host: bitbox.192.168.58.2.nip.io
       paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: web-service
-              port:
-                number: 5173
         - path: /api/
           pathType: Prefix
           backend:
@@ -66,6 +59,14 @@ ingress:
               name: eval-service
               port:
                 number: 8000
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: web-service
+              port:
+                number: 5173
+
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
