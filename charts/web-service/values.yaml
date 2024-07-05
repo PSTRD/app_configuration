@@ -59,7 +59,7 @@ ingress:
               name: web-service
               port:
                 number: 5173
-        - path: /api/add
+        - path: /api/
           pathType: Prefix
           backend:
             service:
